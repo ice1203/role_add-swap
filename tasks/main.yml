@@ -13,6 +13,9 @@
   when: swap_file_test.stdout.find('swap file') == -1
 - shell: swapon {{ swap_file_path }}
   when: ansible_swaptotal_mb < 1
+- name: fstab編集
+  lineinfile: dest=/etc/fstab line="/swapfile swap swap defaults 0 0"
+- shell: mount -a
 #- mount:
 #    name: swap
 #    src: '{{ swap_file_path }}'
