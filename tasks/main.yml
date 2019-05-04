@@ -1,7 +1,7 @@
 - set_fact:
     swap_file_path: /swapfile
 # args creates でファイルが存在しなければ実行させるという動き
-- shell: dd if=/dev/zero of={{ swap_file_path }} bs={{ ansible_memtotal_mb * 2 }} count=1M
+- shell: dd if=/dev/zero of={{ swap_file_path }} bs={{ ansible_memtotal_mb }} count=1M
   args:
     creates: '{{ swap_file_path }}'
 - file:
